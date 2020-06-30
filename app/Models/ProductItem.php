@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Models\OrderItem;
 use Models\Product;
 use Models\ProductItemImage;
+use Models\User;
 use Models\VariationItem;
 use Models\Wishlist;
 
@@ -27,7 +28,7 @@ class ProductItem extends Model
 
     public function wishlist()
     {
-        return $this->hasMany(Wishlist::class);
+        return $this->hasManyThrough(User::class, Wishlist::class);
     }
 
     public function images()

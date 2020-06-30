@@ -10,6 +10,7 @@ use Models\Address;
 use Models\CustomerReview;
 use Models\Order;
 use Models\Payment;
+use Models\ProductItem;
 use Models\Wishlist;
 
 class User extends Authenticatable
@@ -65,6 +66,6 @@ class User extends Authenticatable
 
     public function wishlists()
     {
-        return $this->hasMany(Wishlist::class);
+        return $this->hasManyThrough(ProductItem::class, Wishlist::class);
     }
 }
