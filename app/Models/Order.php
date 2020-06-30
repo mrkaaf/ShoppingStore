@@ -4,6 +4,7 @@ namespace Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Models\Address;
 use Models\OrderItem;
 use Models\Payment;
 use Models\Shipping;
@@ -31,5 +32,10 @@ class Order extends Model
     public function payment()
     {
         return $this->hasOne(Payment::class);
+    }
+
+    public function address()
+    {
+        return $this->hasOneThrough(Address::class, Shipping::class);
     }
 }
