@@ -1,10 +1,16 @@
 <?php
 
-namespace App;
+namespace Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
+use Models\Address;
+use Models\CustomerReview;
+use Models\Order;
+use Models\Payment;
+use Models\Wishlist;
 
 class User extends Authenticatable
 {
@@ -36,4 +42,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(CustomerReview::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
 }

@@ -19,6 +19,8 @@ class CreateShippingsTable extends Migration
             $table->string('shipping_status');
             $table->unsignedBigInteger('order_id');
             $table->timestamps();
+
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 
